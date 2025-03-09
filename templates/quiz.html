@@ -8,7 +8,7 @@
     <style>
         body {
             font-family: 'Poppins', sans-serif;
-            background-color:rgb(252, 251, 251);
+            background-color: rgb(252, 251, 251);
             background: linear-gradient(135deg, #74ebd5, #ACB6E5);
             text-align: center;
             position: relative;
@@ -44,6 +44,11 @@
             padding: 5px 10px;
             background: rgba(255, 255, 255, 0.2);
             border-radius: 5px;
+        }
+        .error {
+            color: red;
+            font-weight: bold;
+            margin-bottom: 10px;
         }
         .question {
             text-align: left;
@@ -100,11 +105,15 @@
 <body>
     <div class="scoreboard">
         <p>🏆 Genel En Yüksek Skor: {{ highest_score }}</p>
-        <p>⭐ Senin En Yüksek Skorun: {{ user.highest_score }}</p>
     </div>
     
     <div class="container">
         <h1>🎯 Quiz</h1>
+        
+        {% if error %}
+            <p class="error">{{ error }}</p>
+        {% endif %}
+        
         <form method="POST" action="/submit">
             <div>
                 <label for="username"><strong>Adınız:</strong></label>
@@ -131,7 +140,6 @@
     </div>
 </body>
 </html>
-
 
 
 
